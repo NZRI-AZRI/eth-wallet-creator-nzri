@@ -61,7 +61,7 @@ let qrcodeCount2 = 0 ;
 
     //QRコードで出力
     let el = document.getElementById('qrcode2adr');
-    let text1 = ethAccount.privateKey; //アドレス-トークンID-OTPの順にQRコードに書き出し。 '-'は区切り文字。
+    let text1 = myAccountAdr; //アドレス-トークンID-OTPの順にQRコードに書き出し。 '-'は区切り文字。
     console.log(text1);
     if (qrcodeCount2 < 1){
       qrcode1 = new QRCode(el, text1);	

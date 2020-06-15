@@ -21,12 +21,13 @@
             <!-- Key生成　-->
             <p>・２．秘密鍵生成ボタン</p>
             <button onclick="createWalletRnHex()"> 秘密鍵を生成（ランダム32バイトをエントロピーとして利用）</button>
-            <p id="priKey"> 秘密鍵表示部分</p>
+            <p id="priKey"> 秘密鍵表示部分　</p>
             <!--秘密鍵をQRコード表示-->
             <div id="qrcode1key">
                 <p id="qrcode1keytime"></p>
             </div>
-            
+            <p > 秘密鍵表示後に紙に印刷することもできます。　</p>
+            <input type="button" value="秘密鍵を印刷する" onclick="window.print();" />
             <!-- Key入力　-->
             <p>・３．入力欄にあなたの秘密鍵を0x形式で入力 --->:
                 <input type="password"  name="privateKey1" id="privateKey1" style="width:200px">
@@ -41,14 +42,13 @@
             <div id="qrcode2adr">
                 <p id="qrcode2adrtime"></p>
             </div>
+            <p>・６．紙などに印刷して保存</p>
+            <p>紙などに保存して保管してください</p>
+            <input type="button" value="すべて印刷する" onclick="window.print();" />
 
         </span>
         <br><br><br>
     </div>
-    
-
-    
-
 
     <!-- web3 js -->
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
