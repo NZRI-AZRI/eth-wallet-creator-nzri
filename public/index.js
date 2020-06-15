@@ -14,7 +14,7 @@ let qrcodeCount2 = 0 ;
 //init　web3 初期化
 //async function initApp() {
   window.initApp = async () => {
-    web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/39a7b8b9d7924f8398627a6fccb53bab"));
+    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/39a7b8b9d7924f8398627a6fccb53bab"));
     //インフラ(infra.io)のキーは各自インフラに登録して手に入れてください。
     
     document.getElementById("initResult").innerText = '初期化しました';
