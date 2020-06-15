@@ -1,23 +1,15 @@
-/*
-web3.js が必要
-//ABI(Application Binary Interface) はブロックチェーンの外からコントラクトを利用するためのインターフェースの定義。
-//ABI を記述した二つのファイル、abigene.jsとabiauth.jsが必要。
-//Rinkeby testnet で作動する。
-*/
 
-//--宣言--
-//web3
-let privateKey;
-let account ;//coinbase
-let myAccount;// !!only owner mint new nft.
-let web3;
+
+let web3;//web3
+let account;
 
 var nonceCount; //nonnce (global var)
 var gasPri;
 var gasLim;
 
 let conInstance; // contractinstance
-
+let qrcodeCount1 = 0 ;
+let qrcodeCount2 = 0 ;
 
 /**/
 //init　web3 初期化
@@ -30,9 +22,24 @@ let conInstance; // contractinstance
   };
 
   window.createWalletRnHex = async () => {
-    let priKey = web3.eth.accounts.create( web3.utils.randomHex(32) );
-    console.log('Created privateKey is' , priKey);
-    document.getElementById("priKey").innerText = priKey.privateKey;
+    
+    //秘密鍵生成
+    let ethAccount = web3.eth.accounts.create( web3.utils.randomHex(32) );
+    console.log('Created privateKey is' , ethAccount);
+    document.getElementById("priKey").innerText = ethAccount.privateKey;
+
+    //QRコードで出力
+    let el = document.getElementById('qrcode1key');
+    let text1 = ethAccount.privateKey; //アドレス-トークンID-OTPの順にQRコードに書き出し。 '-'は区切り文字。
+    console.log(text1);
+    if (qrcodeCount1 < 1){
+      qrcode1 = new QRCode(el, text1);	
+    }else if (qrcodeCount1 >= 1){
+      qrcode1.makeCode(text1); // make another code.
+    }
+    qrcodeCount1 = qrcodeCount1 + 1 ;
+    document.getElementById("qrcode1time").innerText = 'Private Key' ;	
+    console.log(qrcodeCount1);
   };
 
 
@@ -50,6 +57,23 @@ let conInstance; // contractinstance
     console.log('myAccount' , myAccountAdr );
     document.getElementById("key2adr").innerText = myAccountAdr;
 
+
+
+
+    //QRコードで出力
+    let el = document.getElementById('qrcode2adr');
+    let text1 = ethAccount.privateKey; //アドレス-トークンID-OTPの順にQRコードに書き出し。 '-'は区切り文字。
+    console.log(text1);
+    if (qrcodeCount2 < 1){
+      qrcode1 = new QRCode(el, text1);	
+    }else if (qrcodeCount2 >= 1){
+      qrcode2.makeCode(text1); // make another code.
+    }
+    qrcodeCount2 = qrcodeCount2 + 1 ;
+    document.getElementById("qrcode2adrtime").innerText = 'Account Address' ;	
+    console.log(qrcodeCount2);
+
+
 };
 
 
@@ -58,11 +82,11 @@ window.mint = async (adr,nftid,nfturi) => {
   console.log('argument is' ,adr,nftid,nfturi); 
 
   // メソッドのABIをエンコード
-  let encodedABI = await mintInstance.methods.mint(adr,nftid, nfturi).encodeABI();
+  let encodedABI = await conInstance.methods.mint(adr,nftid, nfturi).encodeABI();
   console.log('encodeABI is ', encodedABI);
   
   // gas量を計算
-  let gasAmount = await mintInstance.methods.mint(adr,nftid, nfturi).estimateGas({from:account.address}) + 5000;
+  let gasAmount = await conInstance.methods.mint(adr,nftid, nfturi).estimateGas({from:account.address}) + 5000;
   console.log('gasAmount is ', gasAmount);
 
 
@@ -107,7 +131,7 @@ window.addEventListener('load', async function() {
 //------------------------------------------------
 //Author
 //1.Code by NZRI.
-//2020-06-14
+//2020-06-15
 //------------------------------------------------
 */
 

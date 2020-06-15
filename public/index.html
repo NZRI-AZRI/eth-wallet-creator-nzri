@@ -1,47 +1,46 @@
 <!doctype html>
 <html>
 <head>
-    <title>"Mint system" test page</title>
+    <title>"Wallet system" test page</title>
     <meta charset="utf-8" />
-    <script>
-        function check(){
-            if(window.confirm('送信実行してよろしいですか？')){ // 確認ダイアログを表示
-                return true; // 「OK」時は送信実行
-            }
-            else{ // 「キャンセル」時の処理
-                return false; // 警告ダイアログを表示
-            }
-        }
-    </script>
+    <!--QR code write -->
+    <script type="text/javascript" src="./public/qrcode.min.js"></script>
+
 </head>
 
 <body>
     <div>
         <h1>Create ETH wallet</h1><br>
-        
         <h2>秘密鍵とイーサリアム口座を提供するアプリです。 </h2>
-        <h2>（metamask,portis,etc... 使えない方へ。） </h2>
         <span>
             <!-- init App -->
-            <p>・アプリ初期化ボタン</p>
+            <p>・１．アプリ初期化ボタン</p>
             <button onclick="initApp()"> アプリ初期化</button>
             <p id="initResult"></p>
 
             <!-- Key生成　-->
-            <p>・秘密鍵生成ボタン</p>
+            <p>・２．秘密鍵生成ボタン</p>
             <button onclick="createWalletRnHex()"> 秘密鍵を生成（ランダム32バイトをエントロピーとして利用）</button>
             <p id="priKey"> 秘密鍵表示部分</p>
-
+            <!--秘密鍵をQRコード表示-->
+            <div id="qrcode1key">
+                <p id="qrcode1keytime"></p>
+            </div>
             
             <!-- Key入力　-->
-            <p>・入力欄にあなたの秘密鍵を0x形式で入力 --->:
+            <p>・３．入力欄にあなたの秘密鍵を0x形式で入力 --->:
                 <input type="password"  name="privateKey1" id="privateKey1" style="width:200px">
             </p>
-            <p>・秘密鍵を入力したら以下のボタンをクリック</p><br>
+            <p>・４．秘密鍵を入力したら以下のボタンをクリック</p><br>
             <button onclick="setPrivateKeyToWallet()"> 秘密鍵からアドレスを表示</button>
+
             
-            <p>・実行結果 イーサリアム口座アドレスを表示</p>
+            <p>・５．実行結果 イーサリアム口座アドレスを表示</p>
             <p id="key2adr"> アドレス表示部分</p>
+            <!--口座アドレスをQRコード表示-->
+            <div id="qrcode2adr">
+                <p id="qrcode2adrtime"></p>
+            </div>
 
         </span>
         <br><br><br>
@@ -64,6 +63,6 @@
     <script type="text/javascript" src="./public/index.js"></script>
 
 
-    <footer>Author NZRI </footer>
+    <footer>Author NZRI (https://github.com/NZRI-AZRI)</footer>
 </body>
 </html>
