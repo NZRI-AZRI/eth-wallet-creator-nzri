@@ -15,7 +15,9 @@ let qrcodeCount2 = 0 ;
 //async function initApp() {
   window.initApp = async () => {
     web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/39a7b8b9d7924f8398627a6fccb53bab"));
-    //インフラ(infra.io)のキーは各自インフラに登録して手に入れてください。
+    //インフラ(infra.io)のキーは各自インフラに登録して手に入れてください。私のウェブアプリ以外での上記インフラキーの使用を禁じます。
+    //My infula key is only my app. don't use my infra key at another app.
+    //予告なくインフラキーは変わることがあります。
     
     document.getElementById("initResult").innerText = '初期化しました';
   };
