@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>"Mint system" test page</title>
+    <meta charset="utf-8" />
+    <script>
+        function check(){
+            if(window.confirm('送信実行してよろしいですか？')){ // 確認ダイアログを表示
+                return true; // 「OK」時は送信実行
+            }
+            else{ // 「キャンセル」時の処理
+                return false; // 警告ダイアログを表示
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>Create ETH wallet</h1><br>
+        <!-- init App (use PrivateKey-->
+        <h2>メタマスクを使えない方でも秘密鍵とイーサリアム口座を提供するアプリです。 </h2>
+        <span>
+            <p>・アプリ初期化ボタン</p>
+            <button onclick="initApp()"> アプリ初期化</button>
+
+            <!-- Key生成　-->
+            <p>・秘密鍵生成ボタン</p>
+            <button onclick="createWalletRnHex()"> 秘密鍵を生成（ランダム32バイトをエントロピーとして利用）</button>
+            <p id="priKey"> 秘密鍵表示部分</p>
+
+            
+            <!-- Key入力　-->
+            <p>・入力欄にあなたの秘密鍵を0x形式で入力 --->:
+                <input type="password"  name="privateKey1" id="privateKey1" style="width:200px">
+            </p>
+            <p>・秘密鍵を入力したら以下のボタンをクリック</p><br>
+            <button onclick="setPrivateKeyToWallet()"> 秘密鍵からアドレスを表示</button>
+            
+            <p>・実行結果 イーサリアム口座アドレスを表示</p>
+            <p id="key2adr"> アドレス表示部分</p>
+
+        </span>
+        <br><br><br>
+    </div>
+    
+
+    
+
+
+    <!-- web3 js -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+    <!-- JQuery js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" 
+    crossorigin="anonymous"></script>
+
+    <!--メインスクリプト -->
+    <script type="text/javascript" src="./public/tool.js"></script>
+    <script type="text/javascript" src="./public/index.js"></script>
+
+
+    <footer>Author NZRI </footer>
+</body>
+</html>
