@@ -29,7 +29,7 @@ let conInstance; // contractinstance
   window.createWalletRnHex = async () => {
     let priKey = web3.eth.accounts.create( web3.utils.randomHex(32) );
     console.log('Created privateKey is' , priKey);
-    document.getElementById("priKey").innerText = priKey;
+    document.getElementById("priKey").innerText = priKey.privateKey;
   };
 
 
