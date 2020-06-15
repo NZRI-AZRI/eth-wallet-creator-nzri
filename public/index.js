@@ -2,7 +2,6 @@
 
 let web3;//web3
 let account;
-
 var nonceCount; //nonnce (global var)
 var gasPri;
 var gasLim;
@@ -38,7 +37,7 @@ let qrcodeCount2 = 0 ;
       qrcode1.makeCode(text1); // make another code.
     }
     qrcodeCount1 = qrcodeCount1 + 1 ;
-    document.getElementById("qrcode1time").innerText = 'Private Key' ;	
+    document.getElementById("qrcode1keytime").innerText = 'Private Key' ;	
     console.log(qrcodeCount1);
   };
 
