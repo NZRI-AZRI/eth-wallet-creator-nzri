@@ -77,6 +77,7 @@ let qrcodeCount2 = 0 ;
 
 };
 
+
 // reloadを禁止する方法
 // F5キーによるreloadを禁止する方法
 document.addEventListener("keydown", function (e) {
