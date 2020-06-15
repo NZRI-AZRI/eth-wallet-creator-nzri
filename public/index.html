@@ -18,11 +18,14 @@
 <body>
     <div>
         <h1>Create ETH wallet</h1><br>
-        <!-- init App (use PrivateKey-->
-        <h2>メタマスクを使えない方でも秘密鍵とイーサリアム口座を提供するアプリです。 </h2>
+        
+        <h2>秘密鍵とイーサリアム口座を提供するアプリです。 </h2>
+        <h2>（metamask,portis,etc... これが使えない方へ。） </h2>
         <span>
+            <!-- init App -->
             <p>・アプリ初期化ボタン</p>
             <button onclick="initApp()"> アプリ初期化</button>
+            <p id="initResult"></p>
 
             <!-- Key生成　-->
             <p>・秘密鍵生成ボタン</p>
