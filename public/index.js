@@ -75,35 +75,6 @@ let qrcodeCount2 = 0 ;
 
 };
 
-
-window.mint = async (adr,nftid,nfturi) => {
-
-  console.log('argument is' ,adr,nftid,nfturi); 
-
-  // メソッドのABIをエンコード
-  let encodedABI = await conInstance.methods.mint(adr,nftid, nfturi).encodeABI();
-  console.log('encodeABI is ', encodedABI);
-  
-  // gas量を計算
-  let gasAmount = await conInstance.methods.mint(adr,nftid, nfturi).estimateGas({from:account.address}) + 5000;
-  console.log('gasAmount is ', gasAmount);
-
-
-  // 宛先にコントラクトのアドレス、データにエンコードしたABIをセットしたトランザクションを作成
-  let tx = { to: mintInstance.options.address, data: encodedABI, gas: gasAmount };
-  console.log('tx is ', tx);
-
-  // トランザクションに署名して、そのままnodeに送付実行
-
-  let signedTx = await account.signTransaction(tx);
-  let res = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-  console.log('re is ', res);
-
-};
-
-
-
-
 // reloadを禁止する方法
 // F5キーによるreloadを禁止する方法
 document.addEventListener("keydown", function (e) {
@@ -120,8 +91,6 @@ window.addEventListener('beforeunload', function (e) {
 });
 
 window.addEventListener('load', async function() {
-  // ページ表示完了した1h=3600秒後にリロード
-  //setTimeout(doReload, 1000*3600);
 });
 
 
